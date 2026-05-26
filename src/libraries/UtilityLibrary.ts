@@ -60,7 +60,7 @@ const UtilityLibrary = {
     if (date) {
       const parsedDate = Temporal.PlainDate.from(this.toISODateString(date));
       const today = Temporal.Now.plainDateISO();
-      return Temporal.PlainDate.compare(d, today) === 0;
+      return Temporal.PlainDate.compare(parsedDate, today) === 0;
     }
   },
 
@@ -83,9 +83,9 @@ const UtilityLibrary = {
     // then extract as PlainDate
     const parsedDate = new Date(date);
     const plain = Temporal.PlainDate.from({
-      year: d.getFullYear(),
-      month: d.getMonth() + 1,
-      day: d.getDate(),
+      year: parsedDate.getFullYear(),
+      month: parsedDate.getMonth() + 1,
+      day: parsedDate.getDate(),
     });
     return plain.toString(); // 'YYYY-MM-DD'
   },
@@ -245,10 +245,10 @@ const UtilityLibrary = {
 
   downloadImage(imagePath: string, imageId: string) {
     const downloadAnchor = document.createElement("a");
-    a.href = imagePath;
-    a.download = `rod.dev ${imageId}.png`;
-    a.target = "_blank";
-    a.click();
+    downloadAnchor.href = imagePath;
+    downloadAnchor.download = `rod.dev ${imageId}.png`;
+    downloadAnchor.target = "_blank";
+    downloadAnchor.click();
   },
 
   /**
