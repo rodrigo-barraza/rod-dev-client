@@ -1,7 +1,7 @@
 import FetchWrapper from "@/wrappers/FetchWrapper";
 import ApiConstants from "@/constants/ApiConstants";
 
-const S = ApiConstants.RENDER_SERVICE;
+const SERVICE_URL = ApiConstants.RENDER_SERVICE;
 
 /**
  * Default image generation model.
@@ -131,29 +131,29 @@ const RenderApiLibrary = {
     const params: Record<string, string> = {};
     if (limit) params.limit = limit;
     if (mode) params.mode = mode;
-    return FetchWrapper.get(S, "renders", params);
+    return FetchWrapper.get(SERVICE_URL, "renders", params);
   },
 
   async getLikedRenders(limit?: string) {
     const params: Record<string, string> = {};
     if (limit) params.limit = limit;
-    return FetchWrapper.get(S, "likes", params);
+    return FetchWrapper.get(SERVICE_URL, "likes", params);
   },
 
   async getRender(id?: string) {
     const params: Record<string, string> = {};
     if (id) params.id = id;
-    return FetchWrapper.get(S, "render", params);
+    return FetchWrapper.get(SERVICE_URL, "render", params);
   },
 
   async deleteRender(id?: string) {
     const body: Record<string, string> = {};
     if (id) body.id = id;
-    return FetchWrapper.del(S, "render", body);
+    return FetchWrapper.del(SERVICE_URL, "render", body);
   },
 
   async getCount() {
-    return FetchWrapper.get(S, "count");
+    return FetchWrapper.get(SERVICE_URL, "count");
   },
 
   /**

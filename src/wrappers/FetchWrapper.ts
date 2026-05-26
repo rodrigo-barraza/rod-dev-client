@@ -62,7 +62,7 @@ const FetchWrapper = {
   ) {
     const url = this._buildUrl(service, path);
     const searchParams = new URLSearchParams(params || {});
-    const h = new Headers(headers || {});
+    const requestHeaders = new Headers(headers || {});
     return this.fetch("GET", url, h, {}, searchParams);
   },
 
@@ -76,7 +76,7 @@ const FetchWrapper = {
     headers?: Record<string, string>,
   ) {
     const url = this._buildUrl(service, path);
-    const h = new Headers(headers || {});
+    const requestHeaders = new Headers(headers || {});
     return this.fetch("POST", url, h, body || {}, new URLSearchParams({}));
   },
 

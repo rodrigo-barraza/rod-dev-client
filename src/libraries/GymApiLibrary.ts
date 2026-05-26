@@ -1,11 +1,11 @@
 import FetchWrapper from "@/wrappers/FetchWrapper";
 import ApiConstants from "@/constants/ApiConstants";
 
-const S = ApiConstants.GYM_SERVICE;
+const SERVICE_URL = ApiConstants.GYM_SERVICE;
 
 const GymApiLibrary = {
   async getJournal() {
-    return FetchWrapper.get(S, "journal");
+    return FetchWrapper.get(SERVICE_URL, "journal");
   },
 
   async postJournal(
@@ -27,7 +27,7 @@ const GymApiLibrary = {
     if (stance) body.stance = stance;
     if (equipment) body.equipment = equipment;
     if (position) body.position = position;
-    return FetchWrapper.post(S, "journal", body);
+    return FetchWrapper.post(SERVICE_URL, "journal", body);
   },
 };
 

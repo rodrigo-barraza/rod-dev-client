@@ -58,7 +58,7 @@ const UtilityLibrary = {
    */
   isToday(date: string) {
     if (date) {
-      const d = Temporal.PlainDate.from(this.toISODateString(date));
+      const parsedDate = Temporal.PlainDate.from(this.toISODateString(date));
       const today = Temporal.Now.plainDateISO();
       return Temporal.PlainDate.compare(d, today) === 0;
     }
@@ -81,7 +81,7 @@ const UtilityLibrary = {
   toISODateString(date: string | Date): string {
     // Parse through native Date to handle any date string format,
     // then extract as PlainDate
-    const d = new Date(date);
+    const parsedDate = new Date(date);
     const plain = Temporal.PlainDate.from({
       year: d.getFullYear(),
       month: d.getMonth() + 1,
@@ -244,7 +244,7 @@ const UtilityLibrary = {
   // ─── Media Utilities ────────────────────────────────────────
 
   downloadImage(imagePath: string, imageId: string) {
-    const a = document.createElement("a");
+    const downloadAnchor = document.createElement("a");
     a.href = imagePath;
     a.download = `rod.dev ${imageId}.png`;
     a.target = "_blank";
