@@ -400,9 +400,9 @@ const UtilityLibrary = {
 
   getClientIp(req: IncomingMessage) {
     const forwarded = req.headers["x-forwarded-for"];
-    const forwardedStr = Array.isArray(forwarded) ? forwarded[0] : forwarded;
-    return forwardedStr
-      ? forwardedStr.split(/, /)[0]
+    const forwardedValue = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+    return forwardedValue
+      ? forwardedValue.split(/, /)[0]
       : (req.socket?.remoteAddress ?? "");
   },
 };
