@@ -9,9 +9,11 @@ FROM node:26-alpine AS base
 # --- Dependencies ---
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
+RUN npm install -g pnpm
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN apk add --no-cache git
-RUN npm ci
+RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # --- Build ---
 FROM base AS builder
@@ -25,7 +27,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN --mount=type=secret,id=VAULT_SERVICE_TOKEN \
   export VAULT_SERVICE_TOKEN=$(cat /run/secrets/VAULT_SERVICE_TOKEN 2>/dev/null) && \
-  npm run build
+  pnpm run build
 
 # --- Production ---
 FROM base AS runner

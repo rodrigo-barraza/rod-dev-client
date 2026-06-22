@@ -48,3 +48,6 @@ next-env.d.ts
 
 # logs
 *.log
+
+# Migrated to pnpm
+package-lock.json
