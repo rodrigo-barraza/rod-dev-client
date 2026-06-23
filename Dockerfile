@@ -16,7 +16,7 @@ RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
 # --- Build ---
-FROM base AS builder
+FROM deps AS builder
 WORKDIR /app
 
 # Vault credentials — needed at build time for next.config.ts
