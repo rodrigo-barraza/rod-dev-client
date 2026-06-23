@@ -7,5 +7,4 @@ allowBuilds:
   unrs-resolver: true
   sharp: true
   '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/dbfc1e5a98525c3333626c13b641c928e4efff11': true
-  '@rodrigo-barraza/utilities-library@file:../utilities-library': true
   '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/16951ef6d0c01979265c18c3e94070d304851a3a': true
