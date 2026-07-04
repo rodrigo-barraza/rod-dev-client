@@ -16,7 +16,7 @@ importers:
         version: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/7e6ab815c1f6e753b7544634fb296562cea97ecc(lucide-react@1.21.0(react@19.2.6))(luxon@3.7.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@rodrigo-barraza/utilities-library':
         specifier: github:rodrigo-barraza/utilities-library
-        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/18cc526e6be0eaaab7869d17871bbc8ccfdc66f3
+        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/edf980ffc06fd5c1a162844139ea43f984dbdd97
       '@types/luxon':
         specifier: ^3.7.1
         version: 3.7.2
@@ -682,8 +682,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/18cc526e6be0eaaab7869d17871bbc8ccfdc66f3':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/18cc526e6be0eaaab7869d17871bbc8ccfdc66f3}
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/edf980ffc06fd5c1a162844139ea43f984dbdd97':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/edf980ffc06fd5c1a162844139ea43f984dbdd97}
     version: 0.2.0
 
   '@rolldown/binding-android-arm64@1.0.3':
@@ -3293,7 +3293,7 @@ snapshots:
 
   '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/7e6ab815c1f6e753b7544634fb296562cea97ecc(lucide-react@1.21.0(react@19.2.6))(luxon@3.7.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
-      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/18cc526e6be0eaaab7869d17871bbc8ccfdc66f3
+      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/edf980ffc06fd5c1a162844139ea43f984dbdd97
       lucide-react: 1.21.0(react@19.2.6)
       luxon: 3.7.2
       react: 19.2.6
@@ -3307,7 +3307,7 @@ snapshots:
       - snappy
       - socks
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/18cc526e6be0eaaab7869d17871bbc8ccfdc66f3':
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/edf980ffc06fd5c1a162844139ea43f984dbdd97':
     dependencies:
       mongodb: 7.3.0
       zod: 4.4.3
