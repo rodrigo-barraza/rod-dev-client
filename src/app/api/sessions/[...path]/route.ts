@@ -8,6 +8,7 @@
  */
 
 import { createNextjsProxy } from "@rodrigo-barraza/utilities-library/nextjs";
+import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 
 export const { GET, POST } = createNextjsProxy({
   port: 5580,
@@ -15,7 +16,7 @@ export const { GET, POST } = createNextjsProxy({
   publicUrlEnvironmentVariable: "SESSIONS_SERVICE_PUBLIC_URL",
   internalUrlEnvironmentVariable: "SESSIONS_SERVICE_URL",
   forwardHeaders: [
-    "x-forwarded-for",
+    IDENTITY_HEADERS.forwardedFor,
     "x-real-ip",
     "user-agent",
     "x-session-id",

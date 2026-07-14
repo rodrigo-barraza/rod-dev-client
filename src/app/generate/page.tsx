@@ -4,6 +4,7 @@ import RenderApiLibrary from "@/libraries/RenderApiLibrary";
 import GuestApiLibrary from "@/libraries/GuestApiLibrary";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
 import { headers } from "next/headers";
+import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 import ClientGenerate from "./ClientGenerate";
 import type { Render, Guest } from "@/types/types";
 
@@ -63,7 +64,7 @@ export default async function Page({ searchParams }: Props) {
 
   // Attempt to get guest
   const headersList = await headers();
-  const forwardedFor = headersList.get("x-forwarded-for");
+  const forwardedFor = headersList.get(IDENTITY_HEADERS.forwardedFor);
   const ip = forwardedFor ? forwardedFor.split(",")[0] : "127.0.0.1";
 
   try {

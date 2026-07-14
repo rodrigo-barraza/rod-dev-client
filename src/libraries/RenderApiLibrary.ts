@@ -1,5 +1,6 @@
 import FetchWrapper from "@/wrappers/FetchWrapper";
 import ApiConstants from "@/constants/ApiConstants";
+import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 
 const SERVICE_URL = ApiConstants.RENDER_SERVICE;
 
@@ -56,13 +57,13 @@ const RenderApiLibrary = {
     try {
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
-        "x-project": "rod-dev-client",
-        "x-username": "anonymous",
+        [IDENTITY_HEADERS.project]: "rod-dev-client",
+        [IDENTITY_HEADERS.username]: "anonymous",
       };
 
       // Thread session/local IDs for tracking
       if (typeof window !== "undefined") {
-        if (sessionStorage.id) headers["x-username"] = sessionStorage.id;
+        if (sessionStorage.id) headers[IDENTITY_HEADERS.username] = sessionStorage.id;
       }
 
       const body = {
