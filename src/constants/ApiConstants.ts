@@ -1,7 +1,6 @@
 const ApiConstants = {
   ROD_DEV_SERVICE_URL: process.env.NEXT_PUBLIC_ROD_DEV_SERVICE_URL,
   PRISM_SERVICE_PUBLIC_URL: process.env.NEXT_PUBLIC_PRISM_SERVICE_PUBLIC_URL,
-  SESSION_SERVICE: "session-service",
   SESSIONS_API: "/api/sessions",
   RENDER_SERVICE: "render-service",
   FAVORITE_SERVICE: "favorite-service",
