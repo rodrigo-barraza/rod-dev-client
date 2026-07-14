@@ -1,8 +1,20 @@
 // ============================================================
 // Client — Standalone Boot Script
 // ============================================================
+// CANONICAL COPY: deploy-kit/templates/client-boot.js
+// deploy-kit/lib.sh syncs this file into each client repo as
+// boot.js before every Docker build — edit it HERE, not in the
+// client repos.
+//
 // Bootstraps secrets from Vault into process.env before
-// starting the Next.js standalone server.
+// starting the Next.js standalone server. In standalone mode,
+// next.config does NOT run at startup, so runtime secrets
+// (service URLs, auth credentials) must be fetched here.
+// Uses only Node.js built-ins — no external dependencies.
+//
+// Required env vars (from .env.deploy → Docker .env):
+//   VAULT_SERVICE_URL    — e.g. http://192.168.86.2:5599
+//   VAULT_SERVICE_TOKEN  — bearer token for the vault service
 // ============================================================
 
 const VAULT_URL = process.env.VAULT_SERVICE_URL;
