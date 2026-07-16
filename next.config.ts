@@ -58,7 +58,9 @@ const nextConfig: NextConfig = {
       secrets.ROD_DEV_ASSETS_MINIO_BUCKET_NAME,
 
     // ── Analytics ─────────────────────────────────────────────
-    NEXT_PUBLIC_GA_MEASUREMENT_ID: secrets.GA_MEASUREMENT_ID,
+    // Vault secrets are one flat namespace — a bare GA_MEASUREMENT_ID
+    // collided with clankerbox-client's and baked the wrong property ID.
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: secrets.ROD_DEV_GA_MEASUREMENT_ID,
   },
 };
 
