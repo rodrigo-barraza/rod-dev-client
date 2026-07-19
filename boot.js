@@ -13,7 +13,7 @@
 // Uses only Node.js built-ins — no external dependencies.
 //
 // Required env vars (from .env.deploy → Docker .env):
-//   VAULT_SERVICE_URL    — e.g. http://192.168.86.2:5599
+//   VAULT_SERVICE_URL    — e.g. http://localhost:5599
 //   VAULT_SERVICE_TOKEN  — bearer token for the vault service
 // ============================================================
 
