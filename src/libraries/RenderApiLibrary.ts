@@ -1,6 +1,9 @@
 import FetchWrapper from "@/wrappers/FetchWrapper";
 import ApiConstants from "@/constants/ApiConstants";
-import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
+import {
+  IDENTITY_HEADERS,
+  MODEL_IDS,
+} from "@rodrigo-barraza/utilities-library/taxonomy";
 
 const SERVICE_URL = ApiConstants.RENDER_SERVICE;
 
@@ -8,7 +11,7 @@ const SERVICE_URL = ApiConstants.RENDER_SERVICE;
  * Default image generation model.
  * Uses GPT Image 1.5 (OpenAI's dedicated image API model).
  */
-const DEFAULT_IMAGE_MODEL = "gpt-image-1.5";
+const DEFAULT_IMAGE_MODEL = MODEL_IDS.gptImage;
 const DEFAULT_IMAGE_PROVIDER = "openai";
 
 const RenderApiLibrary = {
