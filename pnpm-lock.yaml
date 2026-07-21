@@ -16,7 +16,7 @@ importers:
         version: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/4a71a3426629ed3512e9de9f2f02c265f6cab10e(@types/react@19.2.17)(lucide-react@1.21.0(react@19.2.6))(luxon@3.7.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@rodrigo-barraza/utilities-library':
         specifier: github:rodrigo-barraza/utilities-library
-        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/e4846477f6fc35fbddc4bdd28057f1c6a0369dca
+        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/cc3c4f0762eac019b777b0a29e7d180a430a1612
       '@types/luxon':
         specifier: ^3.7.1
         version: 3.7.2
@@ -682,8 +682,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/e4846477f6fc35fbddc4bdd28057f1c6a0369dca':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/e4846477f6fc35fbddc4bdd28057f1c6a0369dca}
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/cc3c4f0762eac019b777b0a29e7d180a430a1612':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/cc3c4f0762eac019b777b0a29e7d180a430a1612}
     version: 0.7.0
     peerDependencies:
       express: '>=5.0.0'
@@ -3735,7 +3735,7 @@ snapshots:
 
   '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/4a71a3426629ed3512e9de9f2f02c265f6cab10e(@types/react@19.2.17)(lucide-react@1.21.0(react@19.2.6))(luxon@3.7.2)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
-      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/e4846477f6fc35fbddc4bdd28057f1c6a0369dca
+      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/cc3c4f0762eac019b777b0a29e7d180a430a1612
       '@rrweb/record': 2.1.0
       katex: 0.17.0
       lucide-react: 1.21.0(react@19.2.6)
@@ -3759,7 +3759,7 @@ snapshots:
       - socks
       - supports-color
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/e4846477f6fc35fbddc4bdd28057f1c6a0369dca':
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/cc3c4f0762eac019b777b0a29e7d180a430a1612':
     dependencies:
       mongodb: 7.3.0
       nanoid: 5.1.16
