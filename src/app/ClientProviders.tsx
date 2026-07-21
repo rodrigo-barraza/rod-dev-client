@@ -46,7 +46,7 @@ export default function ClientProviders({
 
   return (
     <ThemeProvider>
-      <SessionTrackerComponent projectId={PROJECT_NAME} />
+      <SessionTrackerComponent projectId={PROJECT_NAME} replay heatmap />
       <LayoutComponent>
         <AlertProvider>
           <AlertMessageHelper />
