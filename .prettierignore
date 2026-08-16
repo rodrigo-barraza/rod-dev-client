@@ -3,3 +3,8 @@ out
 build
 next-env.d.ts
 node_modules
+
+# pnpm owns these and rewrites them on every install — formatting them is
+# churn that comes straight back, and it kept `format:check` permanently red.
+pnpm-lock.yaml
+pnpm-workspace.yaml

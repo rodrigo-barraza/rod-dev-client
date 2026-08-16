@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import RenderApiLibrary from "@/libraries/RenderApiLibrary";
 import GuestApiLibrary from "@/libraries/GuestApiLibrary";
-import UtilityLibrary from "@/libraries/UtilityLibrary";
 import { headers } from "next/headers";
 import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 import ClientGenerate from "./ClientGenerate";
@@ -72,7 +71,7 @@ export default async function Page({ searchParams }: Props) {
     if (getGuest.data) {
       guest = getGuest.data;
     }
-  } catch (e) {}
+  } catch {}
 
   return (
     <ClientGenerate

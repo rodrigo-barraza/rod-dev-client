@@ -4,7 +4,6 @@ import React from "react";
 import style from "./ButtonComponent.module.scss";
 import ActiveLinkComponent from "@/components/ActiveLinkComponent";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
-import { useState, useEffect } from "react";
 import type { ButtonComponentProps } from "@/types/types";
 
 export default function ButtonComponent({
@@ -18,7 +17,10 @@ export default function ButtonComponent({
   routeHref,
   logo,
 }: ButtonComponentProps) {
-  const [getLogo, setLogo] = useState("");
+  // Derived during render, not stored in state: getIconUrl is pure string
+  // concatenation. Filling it from an effect meant the first paint emitted
+  // <img src="">, which the browser treats as "re-request this page".
+  const getLogo = logo ? UtilityLibrary.getIconUrl(logo) : "";
 
   const buttonType: "button" | "submit" =
     type === "submit" ? "submit" : "button";
@@ -30,10 +32,6 @@ export default function ButtonComponent({
       .map((name) => style[name])
       .join(" ");
   }
-
-  useEffect(() => {
-    if (logo) setLogo(UtilityLibrary.getIconUrl(logo));
-  }, [logo]);
 
   return (
     <div

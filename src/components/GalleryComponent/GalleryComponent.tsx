@@ -15,7 +15,6 @@ import type { GalleryComponentProps, Render } from "@/types/types";
 export default function GalleryComponent({
   renders,
   getRenders,
-  getGuest,
   mode,
 }: GalleryComponentProps) {
   const router = useRouter();
@@ -68,10 +67,15 @@ export default function GalleryComponent({
                     UtilityLibrary.navigateToGeneration(router, render.id)
                   }
                   src={render.thumbnail || render.image}
+                  alt={render.prompt}
                 ></img>
               )}
               {mode == "list" && (
-                <img className="image" src={render.image}></img>
+                <img
+                  className="image"
+                  src={render.image}
+                  alt={render.prompt}
+                ></img>
               )}
             </picture>
             {mode == "list" && (

@@ -2,8 +2,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import type { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
 import GymApiLibrary from "@/libraries/GymApiLibrary";
 import ButtonComponent from "@/components/ButtonComponent/ButtonComponent";
@@ -13,16 +12,9 @@ import ExerciseCollection from "@/collections/ExerciseCollection4";
 import DialogComponent from "@/components/DialogComponent";
 
 import ExerciseComponent from "@/components/ExerciseComponent/ExerciseComponent";
-import type {
-  Meta,
-  Exercise,
-  JournalEntry,
-  JournalMap,
-  GymSet,
-} from "@/types/types";
+import type { Exercise, JournalEntry, JournalMap, GymSet } from "@/types/types";
 
 function GymContent() {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [gymExercises] = useState<Exercise[]>(ExerciseCollection);
@@ -40,14 +32,12 @@ function GymContent() {
   const [selectedStance, setSelectedStance] = useState("");
   const [selectedForm, setSelectedForm] = useState("");
 
-  const [originalJournal, setOriginalJournal] = useState<GymSet[]>([]);
+  const [, setOriginalJournal] = useState<GymSet[]>([]);
   const [journal, setJournal] = useState<JournalMap>({});
   const [isModalOpen, setIsModalOpen] = useState<boolean | string>(false);
   const [exerciseStep, setExerciseStep] = useState("exercises");
-  const [subtitle, setSubtitle] = useState("");
-  const [averageTotalVolume, setAverageTotalVolume] = useState<number | string>(
-    0,
-  );
+  const [, setSubtitle] = useState("");
+  const [, setAverageTotalVolume] = useState<number | string>(0);
 
   const [today] = useState(UtilityLibrary.todayISOString());
 
@@ -143,20 +133,6 @@ function GymContent() {
     setTrackList([]);
     clearSelectedExercise();
     setIsModalOpen(false);
-  }
-
-  function lastExerciseEntry(exercise: Exercise): JournalEntry | null {
-    let lastEntry: JournalEntry | null = null;
-    Object.values(journal).forEach((exercises) => {
-      Object.values(exercises).forEach((entry) => {
-        if (entry.exercise == exercise.name) {
-          if (lastEntry === null || entry.date > lastEntry.date) {
-            lastEntry = entry;
-          }
-        }
-      });
-    });
-    return lastEntry;
   }
 
   async function logSet() {

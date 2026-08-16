@@ -16,11 +16,7 @@ import LikeComponent from "@/components//LikeComponent/LikeComponent";
 import { useAlertContext } from "@/contexts/AlertContext";
 import styles from "./Txt2ImageComponent.module.scss";
 import { useApplicationState } from "@/stores/ZustandStore";
-import type {
-  Txt2ImageComponentProps,
-  Render,
-  SelectOption,
-} from "@/types/types";
+import type { Txt2ImageComponentProps, Render } from "@/types/types";
 
 export default function Txt2ImageComponent({
   render,
@@ -41,13 +37,12 @@ export default function Txt2ImageComponent({
     useState("Generated Image #");
   const [generatedImageDescription, setGeneratedImageDescription] =
     useState("");
-  const [generatedImageSampler, setGeneratedImageSampler] = useState("");
-  const [generatedImageStyle, setGeneratedImageStyle] = useState("");
+  const [, setGeneratedImageSampler] = useState("");
+  const [, setGeneratedImageStyle] = useState("");
   const [generatedImageId, setGeneratedImageId] = useState("");
-  const [styleLabelColor, setStyleLabelColor] = useState("black");
-  const [isSharing, setIsSharing] = useState(false);
-  const [like, setLike] = useState(render.like);
-  const [likes, setLikes] = useState(render.likes);
+  const [, setStyleLabelColor] = useState("black");
+  const [, setLike] = useState(render.like);
+  const [, setLikes] = useState(render.likes);
   const [theRender, setTheRender] = useState<Render>(render);
   const formReference = useRef<HTMLFormElement>(null);
   const [aspectRatio, setAspectRatio] = useState(

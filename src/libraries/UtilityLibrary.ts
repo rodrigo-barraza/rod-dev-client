@@ -293,8 +293,8 @@ const UtilityLibrary = {
 
   imageFullScreen(
     event: React.MouseEvent<HTMLElement>,
-    collectionPath: string,
-    workImagePath: string | undefined,
+    _collectionPath: string,
+    _workImagePath: string | undefined,
   ) {
     (event.target as HTMLElement).requestFullscreen();
   },

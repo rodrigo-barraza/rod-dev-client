@@ -13,25 +13,36 @@ const ClientsCollection: Client[] = [
     url: "https://www2.gov.bc.ca",
   },
   {
+    // einstein.exchange no longer resolves — the exchange wound down, so the
+    // tile stays unlinked rather than pointing at a dead domain.
     name: "Einstein Exchange",
   },
   {
+    // Acquired — payfirma.com now redirects to its successor, Kort Payments.
     name: "Payfirma",
+    url: "https://www.payfirma.com",
   },
   {
     name: "Vidigami",
+    url: "https://vidigami.com",
   },
   {
+    // Corporate site rather than the storefront: it is the apt target for a
+    // client reference, and shop./www. both sit behind bot protection.
     name: "lululemon",
-    url: "https://shop.lululemon.com",
+    url: "https://corporate.lululemon.com",
   },
   {
+    // Rebranded to Letus.
     name: "Rentmoola",
+    url: "https://let.us",
   },
   {
     name: "Autozen",
+    url: "https://www.autozen.com",
   },
   {
+    // The Vancouver commuter paper ceased publication in 2019.
     name: "24 Hours",
   },
   {

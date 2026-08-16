@@ -43,7 +43,7 @@ const FetchWrapper = {
       } else {
         error = response;
       }
-    } catch (error) {
+    } catch {
       error = error;
     }
     return { data, error, response };
@@ -77,7 +77,13 @@ const FetchWrapper = {
   ) {
     const url = this._buildUrl(service, path);
     const requestHeaders = new Headers(headers || {});
-    return this.fetch("POST", url, requestHeaders, body || {}, new URLSearchParams({}));
+    return this.fetch(
+      "POST",
+      url,
+      requestHeaders,
+      body || {},
+      new URLSearchParams({}),
+    );
   },
 
   /**

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import type { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { useRouter } from "next/navigation";
 import style from "./index.module.scss";
 import RenderApiLibrary from "@/libraries/RenderApiLibrary";
@@ -11,10 +10,9 @@ import PaginationComponent from "@/components/PaginationComponent/PaginationComp
 import GalleryComponent from "@/components/GalleryComponent/GalleryComponent";
 import FilterComponent from "@/components/FilterComponent/FilterComponent";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
-import GuestApiLibrary from "@/libraries/GuestApiLibrary";
 import useFilteredPagination from "@/hooks/useFilteredPagination";
 import useGuest from "@/hooks/useGuest";
-import type { Meta, Render, Guest } from "@/types/types";
+import type { Render, Guest } from "@/types/types";
 
 interface LikesPageProps {
   guest?: Guest;

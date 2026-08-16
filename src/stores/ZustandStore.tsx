@@ -5,7 +5,7 @@ interface RodrigoState {
   setIsRenderApiAvailable: (renderApi: boolean) => void;
 }
 
-export const useApplicationState = create<RodrigoState>((set, get) => ({
+export const useApplicationState = create<RodrigoState>((set) => ({
   isRenderApiAvailable: false,
   setIsRenderApiAvailable: (isRenderApiAvailable: boolean) =>
     set({ isRenderApiAvailable }),

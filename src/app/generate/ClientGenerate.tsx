@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Txt2ImageComponent from "@/components/Txt2ImageComponent/Txt2ImageComponent";
 import style from "./index.module.scss";
 import RenderApiLibrary from "@/libraries/RenderApiLibrary";
@@ -22,8 +21,7 @@ export default function ClientGenerate({
   randomRenders,
   guest,
 }: ClientGenerateProps) {
-  const router = useRouter();
-  const [exploreRenders, setExploreRenders] = useState<Render[]>(randomRenders);
+  const [exploreRenders] = useState<Render[]>(randomRenders);
   const [renders, setRenders] = useState<Render[]>([]);
   const [renderCount, setRenderCount] = useState(0);
   const { guestData, setGuestData, refreshGuest } = useGuest(guest);
@@ -38,11 +36,6 @@ export default function ClientGenerate({
   async function getRenders() {
     const result = await RenderApiLibrary.getRenders("1", "user");
     setRenders(result.data.images);
-  }
-
-  async function getRandomRenders() {
-    const result = await RenderApiLibrary.getRenders("24");
-    setExploreRenders(result.data.images);
   }
 
   useEffect(() => {

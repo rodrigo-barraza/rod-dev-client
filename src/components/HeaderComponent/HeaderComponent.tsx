@@ -36,7 +36,7 @@ const HeaderComponent: React.FC = () => {
 
   useEffect(() => {
     const setStripeStyles = function () {
-      const style: Object = {};
+      const style: object = {};
       const stripe: HTMLElement | null = document.querySelector(".stripe");
       const floaty: HTMLElement | null = document.querySelector("header");
       const collectionDetails: HTMLElement | null =

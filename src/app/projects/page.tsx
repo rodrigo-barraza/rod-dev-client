@@ -1,7 +1,5 @@
 import styles from "./index.module.scss";
 import ProjectsCollection from "@/collections/ProjectsCollection";
-import UtilityLibrary from "@/libraries/UtilityLibrary";
-import type { Meta } from "@/types/types";
 
 import type { Metadata } from "next";
 

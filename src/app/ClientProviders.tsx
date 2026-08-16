@@ -21,7 +21,7 @@ export default function ClientProviders({
 }: {
   children: React.ReactNode;
 }) {
-  const [getRenderStatus, setRenderStatus] = useState(false);
+  const [, setRenderStatus] = useState(false);
   const { setIsRenderApiAvailable } = useApplicationState();
 
   async function getStatus() {
@@ -34,7 +34,7 @@ export default function ClientProviders({
         setRenderStatus(false);
         setIsRenderApiAvailable(false);
       }
-    } catch (error) {
+    } catch {
       setRenderStatus(false);
       setIsRenderApiAvailable(false);
     }

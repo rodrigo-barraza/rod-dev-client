@@ -5,7 +5,6 @@ import AboutCollection from "@/collections/AboutCollection";
 import ClientsCollection from "@/collections/ClientsCollection";
 import styles from "./index.module.scss";
 import ButtonComponent from "@/components/ButtonComponent/ButtonComponent";
-import UtilityLibrary from "@/libraries/UtilityLibrary";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

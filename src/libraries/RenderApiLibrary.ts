@@ -66,7 +66,8 @@ const RenderApiLibrary = {
 
       // Thread session/local IDs for tracking
       if (typeof window !== "undefined") {
-        if (sessionStorage.id) headers[IDENTITY_HEADERS.username] = sessionStorage.id;
+        if (sessionStorage.id)
+          headers[IDENTITY_HEADERS.username] = sessionStorage.id;
       }
 
       const body = {
