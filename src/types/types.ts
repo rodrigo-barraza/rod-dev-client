@@ -160,6 +160,14 @@ export interface AboutSection {
   collections: AboutEntry[];
 }
 
+// ─── Clients ────────────────────────────────────────────────
+
+export interface Client {
+  name: string;
+  url?: string;
+  logo?: string;
+}
+
 // ─── Socials ────────────────────────────────────────────────
 
 export interface Social {

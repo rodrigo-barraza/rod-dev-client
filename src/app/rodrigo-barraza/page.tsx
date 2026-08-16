@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SocialsCollection from "@/collections/SocialsCollection";
 import AboutCollection from "@/collections/AboutCollection";
+import ClientsCollection from "@/collections/ClientsCollection";
 import styles from "./index.module.scss";
 import ButtonComponent from "@/components/ButtonComponent/ButtonComponent";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
@@ -181,6 +182,39 @@ export default function AboutView() {
                   </p>
                 </div>
               </div>
+            </div>
+            <div className="clients-box">
+              <h2 className="title">Clients</h2>
+              <ul className="clients">
+                {ClientsCollection.map((client, clientIndex) => {
+                  const tile = client.logo ? (
+                    <Image
+                      className="logo"
+                      src={client.logo}
+                      alt={`The ${client.name} logo`}
+                      width={160}
+                      height={60}
+                    />
+                  ) : (
+                    <span className="wordmark">{client.name}</span>
+                  );
+                  return (
+                    <li key={clientIndex}>
+                      {client.url ? (
+                        <a
+                          href={client.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {tile}
+                        </a>
+                      ) : (
+                        tile
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
             <div className="bottom">
               <div className="extra-info">
