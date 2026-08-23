@@ -18,6 +18,22 @@ Object.assign(process.env, secrets);
 
 const nextConfig: NextConfig = {
   output: "standalone",
+
+  // ── Standalone trace: @swc/helpers ESM half ───────────────
+  // @swc/helpers 0.5.16+ added a "module-sync" export condition
+  // pointing at esm/*.js. Node 22.12+ (the image is node:26)
+  // honours it on require(), so the server asks for
+  //   @swc/helpers/esm/_interop_require_default.js
+  // while the build-time tracer still resolves the "default"
+  // branch and copies only cjs/*.cjs. The standalone image then
+  // crash-loops on MODULE_NOT_FOUND. Ship the esm half too.
+  // (next 16.2.6 pinned @swc/helpers 0.5.15, which has no
+  // module-sync condition — that is why this only bit on 16.3.1.)
+  outputFileTracingIncludes: {
+    "/**/*": [
+      "./node_modules/.pnpm/@swc+helpers@*/node_modules/@swc/helpers/esm/**",
+    ],
+  },
   allowedDevOrigins: [],
   turbopack: {},
   transpilePackages: [
