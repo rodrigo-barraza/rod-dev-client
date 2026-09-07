@@ -1,0 +1,164 @@
+.WebGpuPage {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  // Clears the header's black stripe, which is absolutely positioned at the
+  // top of every page and would otherwise swallow this page's dark heading.
+  // The steps mirror the stripe's own breakpoints in HeaderComponent.
+  // (The 120px the header itself occupies in flow is already accounted for.)
+  padding: 170px 24px 64px;
+  @media (max-width: 1432px) {
+    padding-top: calc(8vw + 50px);
+  }
+  @media (max-width: 640px) {
+    padding-top: calc(13vw + 60px);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--FONT_SIZE_H1);
+  font-weight: 500;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 720px;
+  font-size: var(--FONT_SIZE_MEDIUM);
+  line-height: 1.6;
+  color: rgb(80, 80, 80);
+}
+
+.status {
+  padding: 2px 12px;
+  font-size: var(--FONT_SIZE_MINI);
+  color: white;
+  border-radius: 4px;
+  background-color: rgb(90, 90, 90);
+  &.ready {
+    background-color: var(--COLOR_GREEN);
+  }
+  &.unavailable {
+    background-color: var(--COLOR_RED);
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--FONT_SIZE_H3);
+  font-weight: 400;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background-color: white;
+  border-radius: 4px;
+  dt {
+    font-size: var(--FONT_SIZE_MINI);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgb(140, 140, 140);
+  }
+  dd {
+    margin: 0;
+    font-size: var(--FONT_SIZE_SMALL);
+    word-break: break-word;
+  }
+}
+
+.failure {
+  margin: 0;
+  font-size: var(--FONT_SIZE_SMALL);
+  color: var(--COLOR_RED);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 4px 10px;
+  font-size: var(--FONT_SIZE_MINI);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.limits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 4px 24px;
+}
+
+.limit {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 12px;
+  font-size: var(--FONT_SIZE_MINI);
+  background-color: white;
+  border-radius: 4px;
+}
+
+.limitName {
+  color: rgb(80, 80, 80);
+  word-break: break-word;
+}
+
+.limitValue {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.empty {
+  margin: 0;
+  font-size: var(--FONT_SIZE_SMALL);
+  color: rgb(140, 140, 140);
+}
+
+.canvas {
+  aspect-ratio: 16 / 9;
+  min-height: 240px;
+}
+
+.note {
+  margin: 0;
+  font-size: var(--FONT_SIZE_SMALL);
+  color: rgb(140, 140, 140);
+  line-height: 1.6;
+  code {
+    padding: 1px 4px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 3px;
+  }
+}

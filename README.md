@@ -14,6 +14,19 @@ Portfolio site for [rod.dev](https://rod.dev) — AI art gallery, project showca
 - **AI Art Generator** — Generate images via Rod Dev Service API
 - **Renders Gallery** — Filterable AI art gallery with like/favorite system
 
+### WebGPU
+
+- **Device support** — Adapter/device negotiation, canvas configuration,
+  DPR-aware sizing and device-loss recovery, in `WebGpuLibrary` +
+  `useWebGpu` / `useWebGpuFrame`
+- **`WebGpuCanvasComponent`** — A canvas with a live, configured device
+  behind it; it draws nothing until a renderer is passed `onFrame`
+- **`/webgpu`** — Capability report for the current browser: adapter,
+  features, limits, preferred canvas format
+
+Nothing is rendered through WebGPU yet — the support layer is in place so a
+renderer can be built on top of it. See [WEBGPU.md](WEBGPU.md).
+
 ### Gym Tracker
 
 - **Exercise Journal** — Daily workout logging with sets, reps, and weight

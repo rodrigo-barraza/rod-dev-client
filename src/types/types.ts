@@ -2,7 +2,7 @@
 // rod.dev Client — Shared Type Definitions
 // ============================================================
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 // ─── SEO / Meta ─────────────────────────────────────────────
 
@@ -298,4 +298,137 @@ export interface ApiResponse<T = unknown> {
   data: T;
   error?: unknown;
   response?: Response;
+}
+
+// ─── WebGPU ─────────────────────────────────────────────────
+
+/**
+ * Lifecycle of a WebGPU session. `lost` is distinct from `error`: a lost
+ * device is recoverable (the browser dropped it — driver reset, tab
+ * backgrounded on a laptop switching GPUs) and the hook re-initialises,
+ * while `error` and `unsupported` are terminal until something changes.
+ */
+export type WebGpuStatus =
+  "idle" | "initializing" | "ready" | "lost" | "unsupported" | "error";
+
+/**
+ * Why initialisation stopped. Kept separate from the message so the UI can
+ * branch on the cause without matching on prose: "unsupported" wants a
+ * browser-upgrade nudge, "no-adapter" wants a "no GPU we can drive" note.
+ */
+export type WebGpuFailureKind =
+  | "unsupported"
+  | "no-adapter"
+  | "no-device"
+  | "no-context"
+  | "device-lost"
+  | "error";
+
+export interface WebGpuFailure {
+  kind: WebGpuFailureKind;
+  message: string;
+  cause?: unknown;
+}
+
+/**
+ * A flattened, render-safe description of the adapter. `GPUAdapter` itself
+ * exposes features as a set-like and limits as a live object; both are
+ * awkward in React state and in tests, so they are copied into plain data
+ * once at initialisation.
+ */
+export interface WebGpuAdapterReport {
+  vendor: string;
+  architecture: string;
+  device: string;
+  description: string;
+  isFallbackAdapter: boolean;
+  features: string[];
+  limits: Record<string, number>;
+  preferredFormat: GPUTextureFormat;
+}
+
+/** Everything a renderer needs, handed over as one object. */
+export interface WebGpuSession {
+  /** Bumped on every successful (re)initialisation, including recovery from
+   * a lost device. Consumers key their GPU resources on it — buffers and
+   * pipelines from generation N are invalid on generation N + 1. */
+  generation: number;
+  adapter: GPUAdapter;
+  device: GPUDevice;
+  context: GPUCanvasContext;
+  canvas: HTMLCanvasElement;
+  format: GPUTextureFormat;
+  alphaMode: GPUCanvasAlphaMode;
+  report: WebGpuAdapterReport;
+}
+
+export interface WebGpuInitOptions {
+  canvas: HTMLCanvasElement;
+  powerPreference?: GPUPowerPreference;
+  /** Features the caller cannot run without. A missing one fails the init
+   * rather than silently handing back a device that cannot do the job. */
+  requiredFeatures?: GPUFeatureName[];
+  /** Features taken if the adapter has them. Filtered before the device
+   * request, because `requestDevice` rejects outright on an unsupported
+   * feature name. */
+  optionalFeatures?: GPUFeatureName[];
+  /** Limits are negotiated the same way: a value above what the adapter
+   * reports rejects the request, so each one is clamped first. */
+  requiredLimits?: Record<string, number>;
+  alphaMode?: GPUCanvasAlphaMode;
+  /** Extra usage flags for the swap-chain texture. `RENDER_ATTACHMENT` is
+   * always included — without it the canvas texture cannot be drawn to. */
+  usage?: GPUTextureUsageFlags;
+  toneMapping?: GPUCanvasToneMapping;
+  label?: string;
+  onDeviceLost?: (info: GPUDeviceLostInfo) => void;
+  onUncapturedError?: (error: GPUError) => void;
+}
+
+export interface WebGpuSizeOptions {
+  /** Upper bound on `devicePixelRatio`. A 3× phone panel at full ratio
+   * costs 9× the fragments of a 1× one for pixels nobody can resolve. */
+  maxPixelRatio?: number;
+  /** Hard clamp, defaulted from `device.limits.maxTextureDimension2D`. A
+   * canvas sized past it configures the context into an error state. */
+  maxDimension?: number;
+}
+
+export interface WebGpuFrame {
+  session: WebGpuSession;
+  /** Milliseconds since the loop started. */
+  time: number;
+  /** Milliseconds since the previous frame, clamped so a backgrounded tab
+   * does not hand a simulation a multi-second step on its first frame back. */
+  deltaTime: number;
+  frame: number;
+  width: number;
+  height: number;
+}
+
+export interface WebGpuCanvasComponentProps {
+  className?: string;
+  style?: CSSProperties;
+  alphaMode?: GPUCanvasAlphaMode;
+  powerPreference?: GPUPowerPreference;
+  requiredFeatures?: GPUFeatureName[];
+  optionalFeatures?: GPUFeatureName[];
+  requiredLimits?: Record<string, number>;
+  maxPixelRatio?: number;
+  label?: string;
+  /** Called once per successful initialisation, and again after recovery
+   * from a lost device — build pipelines and buffers here. */
+  onSessionReady?: (session: WebGpuSession) => void;
+  /** Called before a session's device goes away: release anything the
+   * consumer allocated against it. */
+  onSessionEnd?: (session: WebGpuSession) => void;
+  onFailure?: (failure: WebGpuFailure) => void;
+  /** Supplying this starts the frame loop. Without it the canvas stays
+   * blank and no work is submitted at all. */
+  onFrame?: (frame: WebGpuFrame) => void;
+  onResize?: (session: WebGpuSession, width: number, height: number) => void;
+  /** Shown in place of the canvas when WebGPU is unavailable. */
+  fallback?: ReactNode;
+  /** Overlaid on the canvas (HUD, controls, status). */
+  children?: ReactNode;
 }

@@ -69,6 +69,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.0.5
         version: 6.0.5(vite@8.0.16(@types/node@26.2.0)(sass@1.102.0))
+      '@webgpu/types':
+        specifier: ^0.1.72
+        version: 0.1.72
       eslint:
         specifier: ^9.39.0
         version: 9.39.5
@@ -666,7 +669,7 @@ packages:
       react-dom: '>=18.0.0'
 
   '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/4382085984ca5b67c506b8cbcfa365aa4bd42cd7':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/4382085984ca5b67c506b8cbcfa365aa4bd42cd7}
+    resolution: {gitHosted: true, integrity: sha512-2uHoyZnBR6VvQ/6Dxuk6KY4pQmTt7ykp993DZ5CtnA0VIO8Rxy6XSs7Fw1RjiRt/yND7eDF0HOCJbEwqGcSKfw==, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/4382085984ca5b67c506b8cbcfa365aa4bd42cd7}
     version: 0.7.0
     peerDependencies:
       express: '>=5.0.0'
@@ -1145,6 +1148,9 @@ packages:
 
   '@vitest/utils@4.1.9':
     resolution: {integrity: sha512-A51o8ymO5PpqlWNnBP9ZHPXDIpuMtTLlGSjN7la4US+LJzoUMyhwjA5QXlm39JexgwHKW4Xjs8Z2d3dLCXOeuA==}
+
+  '@webgpu/types@0.1.72':
+    resolution: {integrity: sha512-0cF7RFM2edNoiIS1ODJp0/Gzv4/xSXhwoR0YCza+OWpJWtn4wmo9DvK91aLlH9+uUnwIriP7ZiC3WitmyhuzBw==}
 
   '@xstate/fsm@1.6.5':
     resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
@@ -4105,6 +4111,8 @@ snapshots:
       '@vitest/pretty-format': 4.1.9
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
+
+  '@webgpu/types@0.1.72': {}
 
   '@xstate/fsm@1.6.5': {}
 
