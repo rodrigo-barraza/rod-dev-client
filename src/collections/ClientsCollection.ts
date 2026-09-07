@@ -49,6 +49,11 @@ const ClientsCollection: Client[] = [
     name: "FIFA",
     url: "https://www.fifa.com",
   },
+  {
+    // Bare domain is canonical here — www.nirvanalabs.io 308s to it.
+    name: "Nirvana Labs",
+    url: "https://nirvanalabs.io",
+  },
 ];
 
 export default ClientsCollection;
