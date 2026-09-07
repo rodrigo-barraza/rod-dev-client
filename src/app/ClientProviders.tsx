@@ -8,6 +8,7 @@ import {
 import { AlertProvider, useAlertContext } from "@/contexts/AlertContext";
 import LayoutComponent from "@/components/LayoutComponent";
 import RenderApiLibrary from "@/libraries/RenderApiLibrary";
+import WebGpuLibrary from "@/libraries/WebGpuLibrary";
 import { useApplicationState } from "@/stores/ZustandStore";
 import { PROJECT_NAME } from "@/config";
 
@@ -22,7 +23,8 @@ export default function ClientProviders({
   children: React.ReactNode;
 }) {
   const [, setRenderStatus] = useState(false);
-  const { setIsRenderApiAvailable } = useApplicationState();
+  const { setIsRenderApiAvailable, setIsWebGpuSupported } =
+    useApplicationState();
 
   async function getStatus() {
     try {
@@ -40,8 +42,17 @@ export default function ClientProviders({
     }
   }
 
+  // One adapter probe per page load, so anything that wants to branch on
+  // WebGPU support can read it off the store instead of asking the driver
+  // again. It requests an adapter, never a device: no GPU memory is taken
+  // and nothing is rendered.
+  async function getWebGpuSupport() {
+    setIsWebGpuSupported(await WebGpuLibrary.probeSupport());
+  }
+
   useEffect(() => {
     getStatus();
+    getWebGpuSupport();
   }, []);
 
   return (
