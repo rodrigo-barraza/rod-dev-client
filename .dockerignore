@@ -10,7 +10,7 @@ node_modules
 .vscode
 .prettierrc
 .prettierignore
-eslint.config.js
+.oxlintrc.json
 tsconfig.tsbuildinfo
 dist/
 *.tsbuildinfo
