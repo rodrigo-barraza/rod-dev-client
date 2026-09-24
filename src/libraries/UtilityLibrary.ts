@@ -1,8 +1,6 @@
 import SamplerCollection from "@/collections/SamplerCollection";
 import StyleCollection from "@/collections/StyleCollection";
 import type { GymSet, JournalMap } from "@/types/types";
-import type { IncomingMessage } from "http";
-import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 
 // Use native Temporal if available, otherwise polyfill (Safari)
 import { Temporal as TemporalPolyfill } from "@js-temporal/polyfill";
@@ -356,55 +354,6 @@ const UtilityLibrary = {
     } else {
       router.push(`/generate`);
     }
-  },
-
-  // ─── SSR Utilities ──────────────────────────────────────────
-
-  buildPageMeta(
-    resolvedUrl: string,
-    overrides: {
-      title: string;
-      description: string;
-      keywords: string;
-      image?: string;
-      type?: string;
-      date?: string;
-      jsonLd?: Record<string, unknown>;
-    },
-  ) {
-    return {
-      url: `https://rod.dev${resolvedUrl}`,
-      type: "website",
-      ...overrides,
-    };
-  },
-
-  /**
-   * Convenience wrapper for simple pages that only need meta props from getServerSideProps.
-   */
-  buildServerSideMetaProps(
-    context: { resolvedUrl: string; req?: IncomingMessage },
-    overrides: {
-      title: string;
-      description: string;
-      keywords: string;
-      image?: string;
-      jsonLd?: Record<string, unknown>;
-    },
-  ) {
-    return {
-      props: {
-        meta: this.buildPageMeta(context.resolvedUrl, overrides),
-      },
-    };
-  },
-
-  getClientIp(req: IncomingMessage) {
-    const forwarded = req.headers[IDENTITY_HEADERS.forwardedFor];
-    const forwardedValue = Array.isArray(forwarded) ? forwarded[0] : forwarded;
-    return forwardedValue
-      ? forwardedValue.split(/, /)[0]
-      : (req.socket?.remoteAddress ?? "");
   },
 };
 

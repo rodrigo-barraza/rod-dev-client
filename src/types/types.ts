@@ -4,23 +4,6 @@
 
 import type { CSSProperties, ReactNode } from "react";
 
-// ─── SEO / Meta ─────────────────────────────────────────────
-
-export interface Meta {
-  title: string;
-  description: string;
-  keywords: string;
-  type?: string;
-  date?: string;
-  url?: string;
-  image?: string;
-  jsonLd?: Record<string, unknown>;
-}
-
-export interface PageProps {
-  meta: Meta;
-}
-
 // ─── Art Collections ────────────────────────────────────────
 
 export interface ArtWork {
@@ -276,10 +259,6 @@ export interface ExerciseComponentProps {
 export interface GenerateHeaderComponentProps {
   guest: Guest;
   renders: Render[];
-}
-
-export interface SeoHeadComponentProps {
-  meta: Meta;
 }
 
 export interface DialogComponentProps {
