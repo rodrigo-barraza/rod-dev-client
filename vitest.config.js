@@ -1,4 +1,4 @@
-import { defineConfig } from "vitest/config";
+import { configDefaults, defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { transformWithOxc } from "vite";
@@ -20,6 +20,9 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     globals: true,
     passWithNoTests: true,
+    // Agent worktrees live under .claude/worktrees with their own tests/;
+    // collected from the main checkout they resolve "@" to the wrong src.
+    exclude: [...configDefaults.exclude, ".claude/**"],
   },
   resolve: {
     alias: {
