@@ -13,10 +13,10 @@ importers:
         version: 0.5.1
       '@rodrigo-barraza/components-library':
         specifier: github:rodrigo-barraza/components-library
-        version: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/0361e5c497d03d14fe9926245ad5a6277d2c23d9(@types/react@19.2.18)(lucide-react@1.31.0(react@19.2.8))(luxon@3.7.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/e79531106cc067b0eb179b008ae296f61a57bf56(@types/react@19.2.18)(lucide-react@1.31.0(react@19.2.8))(luxon@3.7.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@rodrigo-barraza/utilities-library':
         specifier: github:rodrigo-barraza/utilities-library
-        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/a4bd47ac364876139339378da12df286826be93f
+        version: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/d658530d068120eb22997e7db8e1ff771f55e340
       lodash:
         specifier: ^4.18.1
         version: 4.18.1
@@ -74,7 +74,7 @@ importers:
         version: 1.102.0
       typescript:
         specifier: next
-        version: 7.1.0-dev.20260922.1
+        version: 7.1.0-dev.20260923.1
       vite:
         specifier: ^8.0.11
         version: 8.0.16(@types/node@26.2.0)(sass@1.102.0)
@@ -614,8 +614,8 @@ packages:
     resolution: {integrity: sha512-tmmZ3lQxAe/k/+rNnXQRawJ4NjxO2hqiOLTHvWchtGZULp4RyFeh6aU4XdOYBFe2KE1oShQTv4AblOs2iOrNnQ==}
     engines: {node: '>= 10.0.0'}
 
-  '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/0361e5c497d03d14fe9926245ad5a6277d2c23d9':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/0361e5c497d03d14fe9926245ad5a6277d2c23d9}
+  '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/e79531106cc067b0eb179b008ae296f61a57bf56':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/e79531106cc067b0eb179b008ae296f61a57bf56}
     version: 0.2.0
     peerDependencies:
       lucide-react: '>=0.300.0'
@@ -623,8 +623,8 @@ packages:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/a4bd47ac364876139339378da12df286826be93f':
-    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/a4bd47ac364876139339378da12df286826be93f}
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/d658530d068120eb22997e7db8e1ff771f55e340':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/d658530d068120eb22997e7db8e1ff771f55e340}
     version: 0.7.0
     peerDependencies:
       express: '>=5.0.0'
@@ -730,15 +730,6 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@rrweb/record@2.1.0':
-    resolution: {integrity: sha512-jnbpYQED6QdKn1MuEoqJyILkYhuWDhb3kzA/l1i+Di5sfP7apf3HvrlVIMoyZgATMlk2if65BUUrc5R+vabCjQ==}
-
-  '@rrweb/types@2.1.0':
-    resolution: {integrity: sha512-svOHkcuukP6rIjz2umwVsS7uYct+2h0N97+bg+8IJYKIUj5+YjwIvqx5y9NILFKPIu3yk+Mb+KDFfJ8RV+4JlA==}
-
-  '@rrweb/utils@2.1.0':
-    resolution: {integrity: sha512-hU7MT3TSdD+Do7FmMoHrBfPevFCheN5vo2mn97Y4vbXuwemopAmo8dqo5KJeMaA6oQQt7FinHJ0Xqb7k68Ci6Q==}
-
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
@@ -782,9 +773,6 @@ packages:
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
-
-  '@types/css-font-loading-module@0.0.7':
-    resolution: {integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==}
 
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
@@ -839,44 +827,44 @@ packages:
   '@types/whatwg-url@13.0.0':
     resolution: {integrity: sha512-N8WXpbE6Wgri7KUSvrmQcqrMllKZ9uxkYWMt+mCSGwNc0Hsw9VQTW7ApqI4XNrx6/SaM2QQJCzMPDEXE058s+Q==}
 
-  '@typescript/typescript-darwin-arm64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-Yp+LWe9FJBnOmTo4ImaWwwRQqfyTMyq1jDu5EH4IWRAVxdm982LRB4j30bCBycre4ReFzA+Is5Uc+i6jvem0Dg==}
+  '@typescript/typescript-darwin-arm64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-p2xNy8oyMRD9B3z3MqNAnjQEXiD9yaXihxFsgj+JgZXxH9+ET7nl2UHlKEyZMfig2ycV5trgpGe9dGKePE2mXQ==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [darwin]
 
-  '@typescript/typescript-darwin-x64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-G8iU8StWDoUOu+n1INfCI46iS/0Tu/rUw0bWCJxCv5TjDzlzR9v2riA+BeDcKSwGgzYnFSCc9HRu4rnrCwFtag==}
+  '@typescript/typescript-darwin-x64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-OaTrrBL51/g/xYniaY/e4hIjDTXuINd9PVA8KS3vGz8PdZGqOIWu1lNqsOAz54eaUL97XQIUKh8BV9KM7Jd3Aw==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [darwin]
 
-  '@typescript/typescript-linux-arm64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-6+dj4AsWeserJ5/5f3DgI+ibzJBr3l7pXEGxMUuv+lwoQ6QDVZ1tOGaJdsZy4Hg5atMZi/m7iuDFJPvWbYYMxQ==}
+  '@typescript/typescript-linux-arm64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-my2MwrZ2byBrGgSKhaBHw6YzwwAjtYyYF7aWLukbOR3Q/j1XL6wHmwb9xW7mstTdvgcuHE7fzmIX/1jun/rs5w==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [linux]
 
-  '@typescript/typescript-linux-arm@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-4w+Ztlff1U5INtBEeYnNBvBkDkAjH+lwQspxBEmVKxcvDDigYYIH6JpRx7zt3znxsR9Z3Fk5JQAgW5U8ve1tZg==}
+  '@typescript/typescript-linux-arm@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-9h3LN+8GxSlynEq/Cth6zlVpyimP30bR9MN2HntMJ2AAcNtb/Z/2uEo2nzcSJSKiR+Cr/g3JIxKi9vLZ/xvRbQ==}
     engines: {node: '>=16.20.0'}
     cpu: [arm]
     os: [linux]
 
-  '@typescript/typescript-linux-x64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-E4/JVTP1bJFk99cdsIG+AjLAuQEPpRDlwyhUExb6n6tqCPBeI4QlQa9bHZwv3xAMwRpYx5yHyYde2G5Isou7Dg==}
+  '@typescript/typescript-linux-x64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-mmljVmgWH0uIWyzxhKmX4EFm1oTk8H88oAksKC3XqWbHUQxy8y1rYirAE6qXFCYsH2zfVca4pUy0DP7sNKb0RA==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [linux]
 
-  '@typescript/typescript-win32-arm64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-0LE0ikOpuZN2RGqGfOJHjtHFGVsQ0QWUcLxqaA02kpHhs95wuPjbgSJTp1bTCw86CMsTR3RLj/N1NGtw0IC6tw==}
+  '@typescript/typescript-win32-arm64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-cKdMtBWCx8ppL1pEO80QTwc0Yq9K0eyYSabmS0m7fj3MQ7sxW231De0iXdDvz0r39KJuA+nV6QrOJqeP8piUQg==}
     engines: {node: '>=16.20.0'}
     cpu: [arm64]
     os: [win32]
 
-  '@typescript/typescript-win32-x64@7.1.0-dev.20260922.1':
-    resolution: {integrity: sha512-EysfoTSY19NBoG9RAdTz6/YT0HisIFzBak359KEvjeGMEggawBgWrjCfxjsWFuMd3fTt13USQ7W5aPH6+VrZpA==}
+  '@typescript/typescript-win32-x64@7.1.0-dev.20260923.1':
+    resolution: {integrity: sha512-KqrAWznlwZOT2dx7fLCV4QIy0+XaJZhKh5xau/tp/+CGHLQLnMrcTI67W/Rk/GuTRHrID3RlfvG/EsYnTl3NEg==}
     engines: {node: '>=16.20.0'}
     cpu: [x64]
     os: [win32]
@@ -929,9 +917,6 @@ packages:
   '@webgpu/types@0.1.72':
     resolution: {integrity: sha512-0cF7RFM2edNoiIS1ODJp0/Gzv4/xSXhwoR0YCza+OWpJWtn4wmo9DvK91aLlH9+uUnwIriP7ZiC3WitmyhuzBw==}
 
-  '@xstate/fsm@1.6.5':
-    resolution: {integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==}
-
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
@@ -953,10 +938,6 @@ packages:
 
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
-
-  base64-arraybuffer@1.0.2:
-    resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
-    engines: {node: '>= 0.6.0'}
 
   baseline-browser-mapping@2.10.38:
     resolution: {integrity: sha512-31/02mVB4yuQU6adKk5SlY6m+mxDwUq5KZkyYgnLrrKl7TEm1+3PyDtDBz2kOv/wxZz41GHsvV1A/u6RmiyBvw==}
@@ -1458,9 +1439,6 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
 
-  mitt@3.0.1:
-    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
-
   mongodb-connection-string-url@7.0.1:
     resolution: {integrity: sha512-h0AZ9A7IDVwwHyMxmdMXKy+9oNlF0zFoahHiX3vQ8e3KFcSP3VmsmfvtRSuLPxmyv2vjIDxqty8smTgie/SNRQ==}
     engines: {node: '>=20.19.0'}
@@ -1660,15 +1638,6 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
-  rrdom@2.1.0:
-    resolution: {integrity: sha512-d7oaIHzwffxI74UJMZDGq/f97/Yfm3QX4CcTIlQelt2HsLavItLjp8x8nQ0g9Pet5+5wG1RGr9yvsxb1gJlo8A==}
-
-  rrweb-snapshot@2.1.0:
-    resolution: {integrity: sha512-CFjUKWlO+Dl72gk8qwcDcNE/Pj9yr6IvGRAiRAx12pmJaSWaOKFoFgpQQ1j/mW0WKwEZXbHnMJL8M92gIsdwUQ==}
-
-  rrweb@2.1.0:
-    resolution: {integrity: sha512-gGGvd1eXWnOuJpQumH7+gPmBwTXzNrjmQyedWVePcEx0S5fe3VkQW4vw5f5ItY+vuigaaktte9cZKOg0OEvv+w==}
-
   sass@1.102.0:
     resolution: {integrity: sha512-NSOyTnaQF7rTAEOtI2fwb386vL+akyiQLBZu8Na7hXCb+umJy0GAqlcMIaqACZ6Z1VgTBS4K9PG6B3IdjHGJsw==}
     engines: {node: '>=20.19.0'}
@@ -1786,8 +1755,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  typescript@7.1.0-dev.20260922.1:
-    resolution: {integrity: sha512-m8MHrUEVO3XMp+5fsI15IiSCFVKLIVQxltwRYiI3VVpLIgjKZYy6Ec5JnzoQ6i9vC9B7FfCU3cmOj0uZP4HU/g==}
+  typescript@7.1.0-dev.20260923.1:
+    resolution: {integrity: sha512-x9N7D/ak6y+8Oxh/48n5z0TAMqN5SadG7xvor1h8ms7eGGZvZQvANQh3i2d3vlrnpMvhDmv4QQPdCTU5O70t7g==}
     engines: {node: '>=16.20.0'}
     hasBin: true
 
@@ -2332,10 +2301,9 @@ snapshots:
       '@parcel/watcher-win32-x64': 2.5.6
     optional: true
 
-  '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/0361e5c497d03d14fe9926245ad5a6277d2c23d9(@types/react@19.2.18)(lucide-react@1.31.0(react@19.2.8))(luxon@3.7.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+  '@rodrigo-barraza/components-library@https://codeload.github.com/rodrigo-barraza/components-library/tar.gz/e79531106cc067b0eb179b008ae296f61a57bf56(@types/react@19.2.18)(lucide-react@1.31.0(react@19.2.8))(luxon@3.7.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
-      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/a4bd47ac364876139339378da12df286826be93f
-      '@rrweb/record': 2.1.0
+      '@rodrigo-barraza/utilities-library': https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/d658530d068120eb22997e7db8e1ff771f55e340
       katex: 0.17.0
       lucide-react: 1.31.0(react@19.2.8)
       luxon: 3.7.2
@@ -2358,7 +2326,7 @@ snapshots:
       - socks
       - supports-color
 
-  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/a4bd47ac364876139339378da12df286826be93f':
+  '@rodrigo-barraza/utilities-library@https://codeload.github.com/rodrigo-barraza/utilities-library/tar.gz/d658530d068120eb22997e7db8e1ff771f55e340':
     dependencies:
       mongodb: 7.3.0
       nanoid: 5.1.16
@@ -2423,16 +2391,6 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@rrweb/record@2.1.0':
-    dependencies:
-      '@rrweb/types': 2.1.0
-      '@rrweb/utils': 2.1.0
-      rrweb: 2.1.0
-
-  '@rrweb/types@2.1.0': {}
-
-  '@rrweb/utils@2.1.0': {}
-
   '@standard-schema/spec@1.1.0': {}
 
   '@swc/helpers@0.5.23':
@@ -2484,8 +2442,6 @@ snapshots:
       '@types/deep-eql': 4.0.2
       assertion-error: 2.0.1
 
-  '@types/css-font-loading-module@0.0.7': {}
-
   '@types/debug@4.1.13':
     dependencies:
       '@types/ms': 2.1.0
@@ -2536,25 +2492,25 @@ snapshots:
     dependencies:
       '@types/webidl-conversions': 7.0.3
 
-  '@typescript/typescript-darwin-arm64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-darwin-arm64@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-darwin-x64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-darwin-x64@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-linux-arm64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-linux-arm64@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-linux-arm@7.1.0-dev.20260922.1':
+  '@typescript/typescript-linux-arm@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-linux-x64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-linux-x64@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-win32-arm64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-win32-arm64@7.1.0-dev.20260923.1':
     optional: true
 
-  '@typescript/typescript-win32-x64@7.1.0-dev.20260922.1':
+  '@typescript/typescript-win32-x64@7.1.0-dev.20260923.1':
     optional: true
 
   '@ungap/structured-clone@1.3.3': {}
@@ -2607,8 +2563,6 @@ snapshots:
 
   '@webgpu/types@0.1.72': {}
 
-  '@xstate/fsm@1.6.5': {}
-
   ansi-regex@5.0.1: {}
 
   ansi-styles@5.2.0: {}
@@ -2622,8 +2576,6 @@ snapshots:
   assertion-error@2.0.1: {}
 
   bail@2.0.2: {}
-
-  base64-arraybuffer@1.0.2: {}
 
   baseline-browser-mapping@2.10.38: {}
 
@@ -3333,8 +3285,6 @@ snapshots:
 
   min-indent@1.0.1: {}
 
-  mitt@3.0.1: {}
-
   mongodb-connection-string-url@7.0.1:
     dependencies:
       '@types/whatwg-url': 13.0.0
@@ -3584,25 +3534,6 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.0.3
       '@rolldown/binding-win32-x64-msvc': 1.0.3
 
-  rrdom@2.1.0:
-    dependencies:
-      rrweb-snapshot: 2.1.0
-
-  rrweb-snapshot@2.1.0:
-    dependencies:
-      postcss: 8.5.23
-
-  rrweb@2.1.0:
-    dependencies:
-      '@rrweb/types': 2.1.0
-      '@rrweb/utils': 2.1.0
-      '@types/css-font-loading-module': 0.0.7
-      '@xstate/fsm': 1.6.5
-      base64-arraybuffer: 1.0.2
-      mitt: 3.0.1
-      rrdom: 2.1.0
-      rrweb-snapshot: 2.1.0
-
   sass@1.102.0:
     dependencies:
       chokidar: 5.0.0
@@ -3727,15 +3658,15 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  typescript@7.1.0-dev.20260922.1:
+  typescript@7.1.0-dev.20260923.1:
     optionalDependencies:
-      '@typescript/typescript-darwin-arm64': 7.1.0-dev.20260922.1
-      '@typescript/typescript-darwin-x64': 7.1.0-dev.20260922.1
-      '@typescript/typescript-linux-arm': 7.1.0-dev.20260922.1
-      '@typescript/typescript-linux-arm64': 7.1.0-dev.20260922.1
-      '@typescript/typescript-linux-x64': 7.1.0-dev.20260922.1
-      '@typescript/typescript-win32-arm64': 7.1.0-dev.20260922.1
-      '@typescript/typescript-win32-x64': 7.1.0-dev.20260922.1
+      '@typescript/typescript-darwin-arm64': 7.1.0-dev.20260923.1
+      '@typescript/typescript-darwin-x64': 7.1.0-dev.20260923.1
+      '@typescript/typescript-linux-arm': 7.1.0-dev.20260923.1
+      '@typescript/typescript-linux-arm64': 7.1.0-dev.20260923.1
+      '@typescript/typescript-linux-x64': 7.1.0-dev.20260923.1
+      '@typescript/typescript-win32-arm64': 7.1.0-dev.20260923.1
+      '@typescript/typescript-win32-x64': 7.1.0-dev.20260923.1
 
   undici-types@8.3.0: {}
 
