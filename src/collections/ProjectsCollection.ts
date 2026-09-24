@@ -22,8 +22,8 @@ const ProjectsCollection: Project[] = [
     title: "Spatula",
     year: "January 2023",
     github: "https://github.com/rodrigo-barraza/inscriptor",
-    description: `</p>
-        <p>An image scraper using <a href="https://github.com/apify/crawlee" target="_blank">Apify&apos;s Crawlee</a>: a web scraping and browser automation library for Node.js that helps you build reliable and fast web-crawlers.`,
+    description:
+      'An image scraper using <a href="https://github.com/apify/crawlee" target="_blank">Apify&apos;s Crawlee</a>: a web scraping and browser automation library for Node.js that helps you build reliable and fast web-crawlers.',
     languages: ["JavaScript"],
   },
   {

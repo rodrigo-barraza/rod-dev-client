@@ -15,14 +15,46 @@ export const metadata: Metadata = {
     "rodrigo barraza, vancouver software engineer, photographer, artist, ai artist, generative art, clip guided diffusion, full stack developer, emily carr university, film photography, medium format photography, pristine diffusion, einstein exchange",
 };
 
+const PORTRAIT_URL =
+  "https://assets.rod.dev/rod-dev-assets/images/rodrigo-barraza-black-and-white-portrait.jpg";
+
+// schema.org Person for search engines: ties the name to the portrait, the
+// school and every social profile listed on this page.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rodrigo Barraza",
+  url: "https://rod.dev",
+  image: PORTRAIT_URL,
+  jobTitle: ["Software Engineer", "Photographer", "Artist"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vancouver",
+    addressRegion: "British Columbia",
+    addressCountry: "CA",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Emily Carr University of Art + Design",
+    url: "https://www.ecuad.ca/",
+  },
+  sameAs: SocialsCollection.map((social) => social.url),
+};
+
 export default function AboutView() {
   return (
     <main className={styles.AboutView}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="container">
         <div className="layout">
           <div className="sidebar">
             <Image
-              src="https://assets.rod.dev/rod-dev-assets/images/rodrigo-barraza-black-and-white-portrait.jpg"
+              src={PORTRAIT_URL}
               alt="A black and white photograph of Rodrigo Barraza"
               width={250}
               height={250}

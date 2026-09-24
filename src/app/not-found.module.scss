@@ -1,0 +1,23 @@
+// Sits in the header's black band, like the home page's heading: one row,
+// so it stays inside the band on a phone, where the band is shallowest.
+// Colours go on the elements: styles.scss colours h1 and p directly.
+.NotFound {
+  :global(.container) {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+  }
+  h1 {
+    color: #f0f0f0;
+    font-size: var(--FONT_SIZE_H1);
+    font-weight: 100;
+  }
+  p,
+  a {
+    color: #f0f0f0;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
