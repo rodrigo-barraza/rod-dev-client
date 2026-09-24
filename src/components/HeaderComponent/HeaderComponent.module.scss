@@ -175,9 +175,14 @@
         display: none;
         width: 100px;
         justify-content: flex-end;
-        div {
+        button {
           cursor: pointer;
           border-radius: 10px;
+          border: 0;
+          padding: 0;
+          background: none;
+          color: inherit;
+          font: inherit;
         }
       }
     }

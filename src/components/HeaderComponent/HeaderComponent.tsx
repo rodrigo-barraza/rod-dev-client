@@ -11,7 +11,7 @@ import UtilityLibrary from "@/libraries/UtilityLibrary";
 import ButtonComponent from "@/components/ButtonComponent/ButtonComponent";
 
 const HeaderComponent: React.FC = () => {
-  const [pageOffset, setPageOffset] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [stripeClass, setStripeClass] = useState({});
   const [routeName, setRouteName] = useState("");
@@ -27,10 +27,12 @@ const HeaderComponent: React.FC = () => {
   }
 
   useEffect(() => {
+    // A boolean, so the header re-renders when it crosses the line rather
+    // than on every scrolled pixel.
     function onScroll() {
-      setPageOffset(window.pageYOffset);
+      setIsScrolled(window.scrollY > 35);
     }
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -77,7 +79,7 @@ const HeaderComponent: React.FC = () => {
     <header className={`${styles.HeaderComponent} ${routeName}`}>
       <div className={`stripe ${stripeClass}`}></div>
       <div className="fixed"></div>
-      <div className={`floaty ${pageOffset > 35 ? "tiny" : ""}`}>
+      <div className={`floaty ${isScrolled ? "tiny" : ""}`}>
         <div className="container">
           <div className="name BrandComponent">
             <Link href="/">
@@ -106,19 +108,20 @@ const HeaderComponent: React.FC = () => {
             </ul>
           </nav>
           <div className="hamburger">
-            <div>
-              {!mobileMenu && (
-                <span onClick={() => setMobileMenu(true)}>☰</span>
-              )}
-              {mobileMenu && (
-                <span onClick={() => setMobileMenu(false)}>✖</span>
-              )}
-            </div>
+            <button
+              type="button"
+              aria-label={mobileMenu ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenu}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileMenu(!mobileMenu)}
+            >
+              {mobileMenu ? "✖" : "☰"}
+            </button>
           </div>
         </div>
       </div>
       {mobileMenu && (
-        <div className="overlay">
+        <div className="overlay" id="mobile-menu">
           <nav className="shrink">
             <ul>
               {PagesCollection.map((page, pageIndex) => (
