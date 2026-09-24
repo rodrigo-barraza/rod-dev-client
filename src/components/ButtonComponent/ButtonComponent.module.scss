@@ -269,7 +269,7 @@
     a {
       padding: 0;
       color: inherit;
-      font-family: "Ubuntu";
+      font-family: var(--FONT_FAMILY_UBUNTU);
       font-weight: 500;
       font-size: var(--FONT_SIZE_MINI);
       text-underline-offset: 5px;

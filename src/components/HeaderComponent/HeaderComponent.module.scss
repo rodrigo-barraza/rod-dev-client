@@ -86,7 +86,7 @@
     left: 0;
     top: 0;
     height: 120px;
-    font-family: "Ubuntu", sans-serif;
+    font-family: var(--FONT_FAMILY_UBUNTU);
     background: none;
     transition: 0.33s all;
     display: flex;
