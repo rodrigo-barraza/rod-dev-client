@@ -44,6 +44,18 @@ export interface ArtCollection {
   works: ArtWork[];
 }
 
+/** What a gallery tile needs from a collection, with asset URLs resolved. */
+export interface CollectionTile {
+  path: string;
+  title: string;
+  year: number;
+  medium: string;
+  alt: string;
+  image?: string;
+  video?: string;
+  poster?: string;
+}
+
 // ─── Exercise / Gym ─────────────────────────────────────────
 
 export interface Exercise {

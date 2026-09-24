@@ -213,7 +213,7 @@ const ArtCollectionsCollection: ArtCollection[] = [
         path: "rodrigo-barraza-ainimations-ai-art-animation-descent-to-desert",
         videoPath:
           "rodrigo-barraza-ainimations-ai-art-animation-descent-to-desert.mp4",
-        title: "Millhouse",
+        title: "Descent to Desert",
         year: 2022,
         medium: "CLIP-guided diffusion",
         duration: 10,
@@ -227,7 +227,7 @@ const ArtCollectionsCollection: ArtCollection[] = [
         path: "rodrigo-barraza-ainimations-ai-art-animation-tropical-desert",
         videoPath:
           "rodrigo-barraza-ainimations-ai-art-animation-tropical-desert.mp4",
-        title: "Millhouse",
+        title: "Tropical Desert",
         year: 2022,
         medium: "CLIP-guided diffusion",
         duration: 10,

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import lodash from "lodash";
 import ClientHome from "./ClientHome";
+import ArtCollectionsCollection from "@/collections/ArtCollectionsCollection";
+import UtilityLibrary from "@/libraries/UtilityLibrary";
 
 export const metadata: Metadata = {
   title: "Rodrigo Barraza: Photographer, Software Engineer, Artist",
@@ -12,9 +15,17 @@ export const metadata: Metadata = {
       "https://assets.rod.dev/rod-dev-assets/collections/dreamwork/rodrigo-barraza-dreamwork-beach-medium-format-fuji-velvia-100.jpg",
     ],
   },
-  // We can omit JSON-LD for now or just add it as a script tag in layout later
 };
 
+// The gallery is shuffled here, on the server, so it ships in the HTML. It
+// used to be shuffled in an effect after hydration, which left the
+// prerendered page — what a crawler and the first paint see — with no
+// gallery at all. The page is re-dealt at most every five minutes.
+export const revalidate = 300;
+
 export default function Page() {
-  return <ClientHome />;
+  const tiles = lodash
+    .shuffle(ArtCollectionsCollection)
+    .map((collection) => UtilityLibrary.collectionTile(collection));
+  return <ClientHome tiles={tiles} />;
 }

@@ -1,5 +1,5 @@
 .home {
-  font-family: "Ubuntu", sans-serif;
+  font-family: var(--FONT_FAMILY_UBUNTU);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -35,7 +35,9 @@
     padding: 0 2vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(9, 37.5vw);
+    // Rows follow the collection count; a fixed repeat(9) left an empty
+    // 37.5vw row under the 24 tiles.
+    grid-auto-rows: 37.5vw;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2vw;
@@ -148,7 +150,7 @@
 
     @media (max-width: 640px) {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(12, 50vw);
+      grid-auto-rows: 50vw;
     }
   }
 

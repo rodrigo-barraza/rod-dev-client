@@ -1,6 +1,12 @@
+import { getImageProps } from "next/image";
 import SamplerCollection from "@/collections/SamplerCollection";
 import StyleCollection from "@/collections/StyleCollection";
-import type { GymSet, JournalMap } from "@/types/types";
+import type {
+  ArtCollection,
+  CollectionTile,
+  GymSet,
+  JournalMap,
+} from "@/types/types";
 
 // Use native Temporal if available, otherwise polyfill (Safari)
 import { Temporal as TemporalPolyfill } from "@js-temporal/polyfill";
@@ -275,6 +281,46 @@ const UtilityLibrary = {
   },
 
   /**
+   * A collection as a gallery tile: its thumbnail (or first work) as the
+   * image, its first work's video if it has one, and a poster so a video
+   * tile is not blank before it plays — touch screens never hover it.
+   */
+  collectionTile(collection: ArtCollection): CollectionTile {
+    const [firstWork] = collection.works;
+    const image = collection.thumbnail ?? firstWork?.imagePath;
+    const poster = collection.poster ?? firstWork?.poster;
+    return {
+      path: collection.path,
+      title: collection.title,
+      year: collection.year,
+      medium: collection.medium,
+      // Film descriptions carry credit links; alt text is plain.
+      alt: (collection.description || collection.title).replace(/<[^>]+>/g, ""),
+      image: image ? this.renderAssetPath(image, collection.path) : undefined,
+      video: firstWork?.videoPath
+        ? this.renderAssetPath(firstWork.videoPath, collection.path)
+        : undefined,
+      poster: poster
+        ? this.optimizedImageUrl(
+            this.renderAssetPath(poster, collection.path),
+            480,
+          )
+        : undefined,
+    };
+  },
+
+  /**
+   * A remote image through Next's image optimizer, sized for `width` CSS
+   * pixels on a 2x screen. For the one image next/image cannot render
+   * itself — a video's poster — which otherwise downloads the full-size
+   * original (about 0.9 MB each for Ainimations' sixteen). The height only
+   * satisfies getImageProps; the optimizer keeps the aspect ratio.
+   */
+  optimizedImageUrl(url: string, width: number): string {
+    return getImageProps({ src: url, alt: "", width, height: width }).props.src;
+  },
+
+  /**
    * Construct the CDN icon URL for a given icon name.
    * Used by ButtonComponent and FooterComponent.
    */
@@ -330,17 +376,17 @@ const UtilityLibrary = {
 
   // ─── Video Utilities ────────────────────────────────────────
 
+  // currentTarget, not target: the pointer is often over the tile's caption,
+  // which has no video beneath it.
   playVideoOnMouseOver(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    const target = event.target as HTMLElement;
-    const video = target.querySelector("video");
+    const video = event.currentTarget.querySelector("video");
     if (video) {
-      video.play();
+      video.play().catch(() => {});
     }
   },
 
   stopVideoOnMouseOver(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-    const target = event.target as HTMLElement;
-    const video = target.querySelector("video");
+    const video = event.currentTarget.querySelector("video");
     if (video) {
       video.load();
     }

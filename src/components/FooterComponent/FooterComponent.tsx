@@ -109,8 +109,11 @@ const FooterComponent: React.FC = () => {
                       href={social.url}
                     >
                       {/* <div className="logo"></div> */}
+                      {/* Lazy: an eager <img> is preloaded by React ahead of
+                          the gallery above the fold. */}
                       <img
                         className="logo"
+                        loading="lazy"
                         src={UtilityLibrary.getIconUrl(social.type)}
                         alt={social.type}
                       ></img>
