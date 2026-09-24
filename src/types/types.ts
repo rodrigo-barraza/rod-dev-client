@@ -4,23 +4,6 @@
 
 import type { CSSProperties, ReactNode } from "react";
 
-// ─── SEO / Meta ─────────────────────────────────────────────
-
-export interface Meta {
-  title: string;
-  description: string;
-  keywords: string;
-  type?: string;
-  date?: string;
-  url?: string;
-  image?: string;
-  jsonLd?: Record<string, unknown>;
-}
-
-export interface PageProps {
-  meta: Meta;
-}
-
 // ─── Art Collections ────────────────────────────────────────
 
 export interface ArtWork {
@@ -59,6 +42,18 @@ export interface ArtCollection {
   videoControls?: boolean;
   duration?: number;
   works: ArtWork[];
+}
+
+/** What a gallery tile needs from a collection, with asset URLs resolved. */
+export interface CollectionTile {
+  path: string;
+  title: string;
+  year: number;
+  medium: string;
+  alt: string;
+  image?: string;
+  video?: string;
+  poster?: string;
 }
 
 // ─── Exercise / Gym ─────────────────────────────────────────
@@ -276,10 +271,6 @@ export interface ExerciseComponentProps {
 export interface GenerateHeaderComponentProps {
   guest: Guest;
   renders: Render[];
-}
-
-export interface SeoHeadComponentProps {
-  meta: Meta;
 }
 
 export interface DialogComponentProps {

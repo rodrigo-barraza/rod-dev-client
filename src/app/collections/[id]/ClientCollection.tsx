@@ -1,34 +1,23 @@
 "use client";
 
-import lodash from "lodash";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./[id].module.scss";
 import UtilityLibrary from "@/libraries/UtilityLibrary";
-import ArtCollectionsCollection from "@/collections/ArtCollectionsCollection";
-import type { ArtCollection, ArtWork } from "@/types/types";
+import LazyVideoComponent from "@/components/LazyVideoComponent/LazyVideoComponent";
+import type { ArtCollection, ArtWork, CollectionTile } from "@/types/types";
 
 interface ClientCollectionProps {
   currentCollectionWorks: ArtWork[];
   currentCollection: ArtCollection;
+  moreCollections: CollectionTile[];
 }
 
 export default function ClientCollection({
   currentCollectionWorks,
   currentCollection,
+  moreCollections,
 }: ClientCollectionProps) {
-  const [moreCollections, setMoreCollections] = useState<ArtCollection[]>([]);
-
-  useEffect(() => {
-    const result = lodash
-      .reject(lodash.shuffle(ArtCollectionsCollection), {
-        name: currentCollection?.title,
-      })
-      .slice(0, 3) as ArtCollection[];
-    setMoreCollections(result);
-  }, [currentCollection?.title]);
-
   return (
     <main className={styles.CollectionView}>
       <div className="collection">
@@ -68,6 +57,8 @@ export default function ClientCollection({
                 {work.imagePath && (
                   <picture>
                     <img
+                      loading={workIndex === 0 ? "eager" : "lazy"}
+                      decoding="async"
                       onClick={(event) =>
                         UtilityLibrary.imageFullScreen(
                           event,
@@ -79,30 +70,30 @@ export default function ClientCollection({
                         work?.imagePath,
                         currentCollection?.path,
                       )}
-                      alt={work.title}
+                      alt={work.caption || work.title}
                     ></img>
                   </picture>
                 )}
 
                 {work.videoPath && (
-                  <video
-                    id="oneVideo"
-                    autoPlay
-                    muted
+                  <LazyVideoComponent
+                    src={UtilityLibrary.renderAssetPath(
+                      work.videoPath,
+                      currentCollection.path,
+                    )}
+                    poster={
+                      work.poster
+                        ? UtilityLibrary.optimizedImageUrl(
+                            UtilityLibrary.renderAssetPath(
+                              work.poster,
+                              currentCollection.path,
+                            ),
+                            720,
+                          )
+                        : undefined
+                    }
                     controls={currentCollection.videoControls}
-                    loop
-                    poster=""
-                    key={work.title}
-                  >
-                    <source
-                      src={UtilityLibrary.renderAssetPath(
-                        work.videoPath,
-                        currentCollection.path,
-                      )}
-                      type="video/mp4"
-                    ></source>
-                    Your browser does not support the video tag.
-                  </video>
+                  />
                 )}
 
                 {currentCollectionWorks.length >= 2 && (
@@ -134,8 +125,8 @@ export default function ClientCollection({
       <div className="container more-collections">
         <div className="section-title">More collections</div>
         <div className="collections">
-          {moreCollections.map((collection, collectionIndex) => (
-            <div className="collection" key={collectionIndex}>
+          {moreCollections.map((collection) => (
+            <div className="collection" key={collection.path}>
               <Link
                 href={`/collections/${collection.path}`}
                 onMouseOver={(event) =>
@@ -146,38 +137,23 @@ export default function ClientCollection({
                 }
               >
                 <div className="image">
-                  {!collection.works[0].videoPath && !collection.imagePath && (
+                  {!collection.video && collection.image && (
                     <Image
-                      src={UtilityLibrary.renderAssetPath(
-                        collection.works[0].imagePath ?? "",
-                        collection.path,
-                      )}
-                      alt={collection.description || collection.title}
+                      src={collection.image}
+                      alt={collection.alt}
                       fill={true}
+                      sizes="(max-width: 960px) 100vw, 33vw"
                     ></Image>
                   )}
-                  {collection.works[0].videoPath && (
+                  {collection.video && (
                     <video
                       muted
                       loop
-                      preload="metadata"
-                      key={collection.title}
-                      poster={
-                        collection.poster
-                          ? UtilityLibrary.renderAssetPath(
-                              collection.poster,
-                              collection.path,
-                            )
-                          : ""
-                      }
+                      playsInline
+                      preload="none"
+                      poster={collection.poster}
                     >
-                      <source
-                        src={UtilityLibrary.renderAssetPath(
-                          collection.works[0].videoPath,
-                          collection.path,
-                        )}
-                        type="video/mp4"
-                      ></source>
+                      <source src={collection.video} type="video/mp4"></source>
                       Your browser does not support the video tag.
                     </video>
                   )}

@@ -11,7 +11,7 @@
     text-align: justify;
   }
   textarea {
-    font-family: "Ubuntu", sans-serif;
+    font-family: var(--FONT_FAMILY_UBUNTU);
     font-size: var(--FONT_SIZE_MEDIUM_FLEXIBLE);
     color: black;
     font-weight: 100;

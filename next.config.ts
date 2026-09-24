@@ -18,6 +18,21 @@ Object.assign(process.env, secrets);
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
+
+  // ── Response headers ──────────────────────────────────────
+  // No HSTS: every .dev domain is on the browsers' HSTS preload list.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
+  },
 
   // ── Standalone trace: @swc/helpers ESM half ───────────────
   // @swc/helpers 0.5.16+ added a "module-sync" export condition
