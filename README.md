@@ -11,7 +11,11 @@ Portfolio site for [rod.dev](https://rod.dev) — AI art gallery, project showca
 - **Home Gallery** — Masonry grid with hover descriptions and lightbox
 - **Collections** — Curated project collections with detail views
 - **Projects / About** — CV-style page with skills, education, and work history
-- **AI Art Generator** — Generate images via Rod Dev Service API
+- **AI Art Generator** — Generate images with Prism (GPT Image). Prism admits
+  only a signed-in user or a server presenting `PRISM_SERVICE_API_SECRET`, so
+  the browser calls this site's `/api/prism` relay, which adds the secret
+  server-side and forwards only the health check, the render and its image
+  (`src/libraries/PrismProxyLibrary.ts`)
 - **Renders Gallery** — Filterable AI art gallery with like/favorite system
 
 ### WebGPU

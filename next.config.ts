@@ -68,10 +68,14 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Values here are inlined into every bundle that reads them, the
+  // browser's included. Prism's URL and PRISM_SERVICE_API_SECRET are
+  // not here: the image tool reaches prism-service only through the
+  // /api/prism route handler, which reads both from the server's
+  // environment per request.
   env: {
     // ── Service URLs ──────────────────────────────────────────
     NEXT_PUBLIC_ROD_DEV_SERVICE_URL: secrets.ROD_DEV_SERVICE_URL,
-    NEXT_PUBLIC_PRISM_SERVICE_PUBLIC_URL: secrets.PRISM_SERVICE_PUBLIC_URL,
 
     // ── Sessions ──────────────────────────────────────────────
     SESSIONS_SERVICE_URL: secrets.SESSIONS_SERVICE_URL,
