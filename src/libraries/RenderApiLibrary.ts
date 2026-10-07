@@ -1,26 +1,23 @@
 import FetchWrapper from "@/wrappers/FetchWrapper";
 import ApiConstants from "@/constants/ApiConstants";
-import {
-  IDENTITY_HEADERS,
-  MODEL_IDS,
-} from "@rodrigo-barraza/utilities-library/taxonomy";
+import { IDENTITY_HEADERS } from "@rodrigo-barraza/utilities-library/taxonomy";
 
 const SERVICE_URL = ApiConstants.RENDER_SERVICE;
 
 /**
- * Default image generation model.
- * Uses GPT Image 1.5 (OpenAI's dedicated image API model).
+ * Prism, through this site's server: it adds the service secret Prism
+ * requires and pins the image model (GPT Image) and the project
+ * (PrismProxyLibrary's RENDER_PRISM), so the browser sends only the prompt.
  */
-const DEFAULT_IMAGE_MODEL = MODEL_IDS.gptImage;
-const DEFAULT_IMAGE_PROVIDER = "openai";
+const PRISM_API = ApiConstants.PRISM_API;
 
 const RenderApiLibrary = {
   /**
    * Generate an image via Prism's /chat endpoint with an image API model.
    *
-   * Sends a non-streaming request (?stream=false) to Prism with the user's
-   * prompt enriched by the selected style. Returns the full JSON response
-   * containing base64 image data and metadata.
+   * Sends the user's prompt, enriched by the selected style, to Prism's
+   * non-streaming /chat. Returns the full JSON response containing the
+   * image (base64 data or a MinIO ref) and metadata.
    */
   async postRender(
     prompt: string,
@@ -45,22 +42,16 @@ const RenderApiLibrary = {
       estimatedCost?: number;
     };
   }> {
-    const prismUrl = ApiConstants.PRISM_SERVICE_PUBLIC_URL;
-    if (!prismUrl) {
-      throw new Error("PRISM_SERVICE_PUBLIC_URL is not configured");
-    }
-
     // Build an enriched prompt that incorporates the style modifier
     let enrichedPrompt = prompt;
     if (style) {
       enrichedPrompt = `${prompt}, ${style} style`;
     }
 
-    const url = `${prismUrl}/chat?stream=false`;
+    const url = `${PRISM_API}/chat`;
     try {
       const headers: Record<string, string> = {
         "Content-Type": "application/json",
-        [IDENTITY_HEADERS.project]: "rod-dev-client",
         [IDENTITY_HEADERS.username]: "anonymous",
       };
 
@@ -71,15 +62,12 @@ const RenderApiLibrary = {
       }
 
       const body = {
-        provider: DEFAULT_IMAGE_PROVIDER,
-        model: DEFAULT_IMAGE_MODEL,
         messages: [
           {
             role: "user",
             content: enrichedPrompt,
           },
         ],
-        skipConversation: true,
       };
 
       const response = await fetch(url, {
@@ -98,11 +86,12 @@ const RenderApiLibrary = {
       // { data: { id, image, prompt, style, sampler, cfg, count, createdAt, aspectRatio } }
       const imageData = result.images?.[0];
 
-      // MinIO refs (minio://bucket/key) must be resolved through Prism's /files/ endpoint
+      // MinIO refs (minio://bucket/key) are served by Prism's /files/
+      // endpoint, reached same-origin through the relay.
       let imageUrl: string | null = null;
       if (imageData?.minioRef) {
         const key = imageData.minioRef.replace(/^minio:\/\/[^/]+\//, "");
-        imageUrl = `${prismUrl}/files/${key}`;
+        imageUrl = `${PRISM_API}/files/${key}`;
       } else if (imageData?.data) {
         imageUrl = `data:${imageData.mimeType || "image/png"};base64,${imageData.data}`;
       }
@@ -165,12 +154,8 @@ const RenderApiLibrary = {
    * Check if Prism is available by hitting its /health endpoint.
    */
   async getStatus() {
-    const prismUrl = ApiConstants.PRISM_SERVICE_PUBLIC_URL;
-    if (!prismUrl) {
-      return { data: null };
-    }
     try {
-      const response = await fetch(`${prismUrl}/health`);
+      const response = await fetch(`${PRISM_API}/health`);
       if (response.ok) {
         const data = await response.json();
         return { data };
